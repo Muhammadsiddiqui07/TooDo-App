@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toodo App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .main_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card {
+            width: 100%;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main_container">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Toodo App</h5>
+                <form action="/add" method="get">
+                    <div class="input-group mb-5">
+                        <input type="text" width="70%" class="form-control" placeholder="Enter Your Task" name="text">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </form>
+
+                <form action="/delete_all" method="post"    >
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete All</button>
+                </form>
+
+                <div class="container mt-3">
+                    <ul class="list-group">
+                        {{ task_list_html|safe }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
